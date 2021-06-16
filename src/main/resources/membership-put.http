@@ -1,0 +1,68 @@
+PUT http://localhost:8080/api/membership/ban
+Content-Type: application/json
+
+{
+  "user": 1,
+  "club": 2,
+  "subClub": 2,
+  "banDate": "2020-07-15",
+  "banDuration": 5,
+  "banReason": "bad words in sub club 2 again."
+}
+
+###
+
+PUT http://localhost:8080/api/membership/unban
+Content-Type: application/json
+
+{
+  "user": 1,
+  "club": 2,
+  "subClub": 2
+}
+
+###
+
+PUT http://localhost:8080/api/membership/makeadmin
+Content-Type: application/json
+
+{
+  "user": 1,
+  "club": 2,
+  "subClub": 2
+}
+
+###
+
+PUT http://localhost:8080/api/membership/revokeadmin
+Content-Type: application/json
+
+{
+  "user": 1,
+  "club": 2,
+  "subClub": 2
+}
+
+###
+
+PUT http://localhost:8080/api/membership/point
+Content-Type: application/json
+
+{
+  "user": 1,
+  "club": 2,
+  "subClub": 2,
+  "userPointToSubClub": 15
+}
+
+###
+
+PUT http://localhost:8080/api/membership/review
+Content-Type: application/json
+
+{
+  "user": 1,
+  "club": 2,
+  "subClub": 2,
+  "review": "very good sub club"
+}

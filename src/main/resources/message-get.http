@@ -1,0 +1,22 @@
+GET http://localhost:8080/api/messages/sender/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/messages/receiver/2
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/messages/2/3
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/messages/all/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/messages/conversation/2/3
+Accept: application/json

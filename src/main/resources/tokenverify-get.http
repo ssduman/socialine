@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/verify/80f358ca-bc29-44f6-b977-8269ec48d340
+Accept: application/json

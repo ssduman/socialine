@@ -1,0 +1,17 @@
+GET http://localhost:8080/api/Comment/comments
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/Comment/comment/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/Comment/comment/author/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/Comment/comment/post/1
+Accept: application/json

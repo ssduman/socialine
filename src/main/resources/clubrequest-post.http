@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/addClubRequest
+Content-Type: application/json
+
+{
+  "userId": 5,
+  "clubId": 1,
+  "clubName": "club id boşsa veya 0 sa buraya kategori girsin",
+  "subClubName": "subclubname",
+  "suggestion": "öneri sebep vb"
+}

@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/addclub
+Content-Type: application/json
+
+{
+  "name": "Test Club 5",
+  "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+  "rating": 3,
+  "reviews": 3
+}

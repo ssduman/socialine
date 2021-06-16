@@ -1,0 +1,22 @@
+GET http://localhost:8080/api/Post/posts/
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/Post/post/2
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/Post/postsByAuthorId/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/Post/postsByDate/2021-05-02
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/Post/postsBySubClub/1
+Accept: application/json

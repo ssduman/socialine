@@ -1,0 +1,7 @@
+POST http://localhost:8080/api/passreset/cdaf8578-d060-413f-ae26-f0e595ffaf7b
+Content-Type: application/json
+
+{
+  "email": "ab@a.b",
+  "newPassword": "r"
+}

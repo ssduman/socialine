@@ -1,0 +1,25 @@
+PUT http://localhost:8080/api/updsubclubs
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Test Sub Club 1",
+  "creationDate": "2020-07-01",
+  "description": "sub club 1 is changed",
+  "rating": 6,
+  "reviews": 6
+}
+
+
+###
+PUT http://localhost:8080/api/updsubclubs
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Test SubClub 2 changed",
+  "description": "updated sub club 2",
+  "creationDate": "2020-07-01",
+  "rating": 66,
+  "reviews": 6
+}

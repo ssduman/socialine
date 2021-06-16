@@ -1,0 +1,10 @@
+GET http://localhost:8080/api/subclubs/
+Accept: application/json
+
+#####
+GET http://localhost:8080/api/subclubs/1
+Accept: application/json
+
+#####
+GET http://localhost:8080/api/subclubs/2/parent
+Accept: application/json

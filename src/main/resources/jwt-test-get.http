@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/clubs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxIiwiaWF0IjoxNjE4MTU4OTk5LCJleHAiOjE2MTgzNzQ5OTl9.c88BTPqiZbB1y6UOahID1zerckiwMBiN9nWg8cf_mZM

@@ -1,0 +1,25 @@
+PUT http://localhost:8080/api/user/about
+Content-Type: application/json
+
+{
+  "id": 2,
+  "about": "user 2 update about 2"
+}
+
+###
+
+PUT http://localhost:8080/api/user/makeadmin
+Content-Type: application/json
+
+{
+  "id": 2
+}
+
+###
+
+PUT http://localhost:8080/api/user/revokeadmin
+Content-Type: application/json
+
+{
+  "id": 4
+}

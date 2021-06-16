@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/Post/addPost
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "subClubId": 1,
+  "text": "2 post",
+  "title": "2 post title",
+  "isEvent": 1
+}

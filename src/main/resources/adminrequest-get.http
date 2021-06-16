@@ -1,0 +1,21 @@
+GET http://localhost:8080/api/adminRequest/all
+
+###
+
+GET http://localhost:8080/api/adminRequest/user/5
+
+###
+
+GET http://localhost:8080/api/adminRequest/1
+
+###
+
+GET http://localhost:8080/api/adminRequest/club/1
+
+###
+
+GET http://localhost:8080/api/adminRequest/subClub/3
+
+
+
+

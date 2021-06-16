@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/addreport
+Content-Type: application/json
+
+{
+  "reporterId": 4,
+  "targetId": 2,
+  "reason": "I dont like him",
+  "targetPost": "link ya da iceriksssss",
+  "date": "2020-07-02"
+}

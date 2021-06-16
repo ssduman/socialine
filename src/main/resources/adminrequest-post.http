@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/addAdminRequest/
+Content-Type: application/json
+
+{
+  "userId": 5,
+  "clubId": 1,
+  "subClubId": 3,
+  "reason": "admin olmak istiyom",
+  "date": "2020-07-02"
+}

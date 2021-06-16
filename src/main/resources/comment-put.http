@@ -1,0 +1,7 @@
+PUT http://localhost:8080/api/Comment/update
+Content-Type: application/json
+
+{
+  "commentId": 6,
+  "text": "comment 66"
+}

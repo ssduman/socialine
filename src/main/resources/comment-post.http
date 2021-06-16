@@ -1,0 +1,8 @@
+POST http://localhost:8080/api/Comment/addComment
+Content-Type: application/json
+
+{
+  "postId":  3,
+  "userId": 2,
+  "text": "comment 6"
+}

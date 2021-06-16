@@ -1,0 +1,11 @@
+POST http://localhost:8080/api/addmembership
+Content-Type: application/json
+
+{
+  "user": 2,
+  "club": 2,
+  "subClub": 3,
+  "isAdmin": 1,
+  "userPointToSubClub": 8,
+  "isBanned": 0
+}

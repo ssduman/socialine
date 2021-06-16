@@ -1,0 +1,13 @@
+POST http://localhost:8080/api/addsubclub
+Content-Type: application/json
+
+{
+  "adminId": 1,
+  "creatorId": 1,
+  "description": "sub club with image and no date required",
+  "parentId": 1,
+  "name": "Test Sub Club image",
+  "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+  "rating": 11,
+  "reviews": 11
+}

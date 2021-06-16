@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+  "realName": "Test Real User 4 admin",
+  "name": "q4admin",
+  "email": "q4admin@example.com",
+  "password": "q",
+  "isAdmin": 1
+}

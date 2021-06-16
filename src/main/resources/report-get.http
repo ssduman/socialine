@@ -1,0 +1,16 @@
+### ALL
+
+GET http://localhost:8080/api/reports/
+Accept: application/json
+###
+
+GET http://localhost:8080/api/report/1
+Accept: application/json
+###
+
+GET http://localhost:8080/api/report/reporter/4
+Accept: application/json
+###
+
+GET http://localhost:8080/api/report/target/2
+Accept: application/json

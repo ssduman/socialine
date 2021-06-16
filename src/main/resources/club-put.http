@@ -1,0 +1,23 @@
+PUT http://localhost:8080/api/updclubs
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Test Club 5",
+  "creationDate": "2020-07-01",
+  "rating": 6,
+  "reviews": 6
+}
+
+
+###
+PUT http://localhost:8080/api/updclubs
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Test Club 2",
+  "creationDate": "2020-07-01",
+  "rating": 66,
+  "reviews": 6
+}
