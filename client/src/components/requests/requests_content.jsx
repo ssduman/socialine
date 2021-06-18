@@ -260,7 +260,7 @@ class Content extends Component {
 											<div>
 												<a
 													href={
-														'http://localhost:3000/user/' + report.reporterId
+														'user/' + report.reporterId
 													}
 												>
 													Reporting User

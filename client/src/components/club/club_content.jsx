@@ -909,7 +909,7 @@ class ClubContent extends Component {
 																		<div>
 																			<a
 																				href={
-																					'http://localhost:3000/user/' +
+																					'user/' +
 																					report.reporterId
 																				}
 																			>

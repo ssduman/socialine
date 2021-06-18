@@ -47,7 +47,7 @@ class Header extends Component {
 										className='btn btn-outline-warning btn-xl js-scroll-trigger'
 										role='button'
 										style={{ fontWeight: 700 }}
-										href='http://localhost:3000/browse'
+										href='browse'
 									>
 										Browse Clubs
 									</a>

@@ -37,16 +37,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors().and().csrf().disable();
         httpSecurity.authorizeRequests()
-                .antMatchers("/").authenticated()
+                .antMatchers("/").permitAll()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/profile/**").authenticated()
                 .antMatchers("/api/clubs").authenticated()
                 .antMatchers("/api/passreset").permitAll()
                 .antMatchers("/api/passreset/**").permitAll()
-                .and()
-                // .httpBasic();
-                .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
                 .and()
@@ -55,6 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // httpSecurity.httpBasic().disable();
+        httpSecurity.formLogin().disable();
+        // .formLogin().loginPage("/login").permitAll().and()
 
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
