@@ -17,6 +17,7 @@ public class SocketConfig {
     @Bean
     public SocketIOServer socketIOServer() {
         System.out.println("*********SOCKETIOSERVER************");
+        System.out.println(port);
         System.out.println(System.getenv("PORT"));
         System.out.println(Integer.parseInt(System.getenv("PORT")));
         System.out.println(System.getenv("SOCKET_PORT"));
@@ -26,6 +27,7 @@ public class SocketConfig {
         Configuration config = new Configuration();
         config.setHostname(host);
         config.setPort(port);
+        config.setOrigin("*");
         return new SocketIOServer(config);
     }
 }
