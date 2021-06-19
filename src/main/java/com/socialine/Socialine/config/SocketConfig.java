@@ -17,6 +17,7 @@ public class SocketConfig {
     @Bean
     public SocketIOServer socketIOServer() {
         System.out.println("*********SOCKETIOSERVER************");
+        System.out.println(host);
         System.out.println(port);
         System.out.println(System.getenv("PORT"));
         System.out.println(Integer.parseInt(System.getenv("PORT")));
@@ -25,7 +26,7 @@ public class SocketConfig {
         System.out.println("*********SOCKETIOSERVER************");
 
         Configuration config = new Configuration();
-        config.setHostname("https://socialine.herokuapp.com");
+        config.setHostname("socialine.herokuapp.com");
         config.setPort(port);
         config.setOrigin("*");
         return new SocketIOServer(config);
