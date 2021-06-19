@@ -38,7 +38,7 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subClubId")
     private SubClubs subClub;
-    
+
     private String text;
 
     private String title;
