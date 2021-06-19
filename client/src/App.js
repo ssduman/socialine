@@ -19,7 +19,7 @@ import Browse from './components/browse/browse';
 import RequestClub from './components/requests/request_club.jsx';
 import Requests from './components/requests/requests';
 
-var socket = io('/chat');
+var socket = io('https://socialine.herokuapp.com:9090/chat');
 console.log("socket:")
 console.log(socket)
 console.log(":socket")
