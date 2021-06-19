@@ -34,7 +34,6 @@ public class Comment{
     @JoinColumn(name = "post_id")
     private Post post;
 
-    @Lob
     private String text;
 
     public Comment(LocalDateTime date, String text){
