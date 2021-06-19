@@ -25,7 +25,7 @@ public class SocketConfig {
         System.out.println("*********SOCKETIOSERVER************");
 
         Configuration config = new Configuration();
-        config.setHostname(host);
+        config.setHostname("https://socialine.herokuapp.com");
         config.setPort(port);
         config.setOrigin("*");
         return new SocketIOServer(config);
