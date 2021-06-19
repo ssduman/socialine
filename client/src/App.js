@@ -19,7 +19,7 @@ import Browse from './components/browse/browse';
 import RequestClub from './components/requests/request_club.jsx';
 import Requests from './components/requests/requests';
 
-var socket = io('/');
+var socket = io('::9090');
 console.log("socket:")
 console.log(socket)
 console.log(":socket")
