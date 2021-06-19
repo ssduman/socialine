@@ -65,7 +65,7 @@ public class AuthController {
         newUser.setEmail(user.getEmail());
         newUser.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        newUser.setIsVerified(0);
+        newUser.setIsVerified(1);
         newUser.setIsPassChange(0);
         newUser.setIsAdmin(user.getIsAdmin());
 
