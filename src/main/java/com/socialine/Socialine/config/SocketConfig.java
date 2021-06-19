@@ -18,7 +18,7 @@ public class SocketConfig {
     public SocketIOServer socketIOServer() {
         Configuration config = new Configuration();
         config.setHostname(host);
-        // config.setPort(port);
+        config.setPort(Integer.parseInt(System.getenv("PORT")));
         return new SocketIOServer(config);
     }
 }
