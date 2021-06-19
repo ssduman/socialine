@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 
 export async function getUsers() {
-	const res = await fetch('http://localhost:8080/api/users/');
+	const res = await fetch('/api/users/');
 	const data = await res.json();
 
 	return data;

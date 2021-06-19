@@ -20,8 +20,7 @@ class Search extends Component {
 	}
 
 	routeChange = (id) => {
-		let path = '/clubs/' + id;
-		window.location.replace('http://localhost:3000' + path);
+		window.location.replace(`clubs/${id}`);
 	};
 
 	render() {
