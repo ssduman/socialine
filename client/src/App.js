@@ -19,9 +19,10 @@ import Browse from './components/browse/browse';
 import RequestClub from './components/requests/request_club.jsx';
 import Requests from './components/requests/requests';
 
-var socket = io('/chat', {
-	transports: ['polling', 'websocket'],
-});
+var socket = io('/chat');
+console.log("socket:")
+console.log(socket)
+console.log(":socket")
 
 class App extends Component {
 	state = {
