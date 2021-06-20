@@ -12,7 +12,7 @@
 * Node
 ## Run: ##
 * Clone the repository, run `mvn clean install`, then `java -tar target/Socialine-0.0.1-SNAPSHOT.jar`
-* Clone the repository, run `cd server && mvn spring-boot:run` (or run from IntelliJ IDEA) and `cd client && npm i && npm start`
+* Clone the repository, run `mvn spring-boot:run` (or run from IntelliJ IDEA) and `cd client && npm i && npm start`
 ## Contributors: ##
 * [yavuzerenozer](https://github.com/yavuzerenozer)
 * [ssduman](https://github.com/ssduman)
