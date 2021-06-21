@@ -1,11 +1,38 @@
 import React, { Component } from 'react';
-import { register } from '../api/apiCall';
+import { register, login } from '../api/apiCall';
+
+import cookie from 'js-cookie';
 
 class Header extends Component {
-	state = { name: '', pw: '', email: '', phone: '' };
+	state = { 
+		name: '', 
+		pw: '', 
+		email: '', 
+		phone: '' 
+	};
 
 	handleChange = (input) => (e) => {
 		this.setState({ [input]: e.target.value });
+	};
+	
+	handleNewUser = () => {
+		var user = { 
+			name: this.state.name, 
+			password: this.state.pw 
+		};
+		login(user).then((response) => {
+			if (response.res === 'success') {
+				cookie.set('userid', response.userid);
+				cookie.set('username', this.state.name);
+				cookie.set('token', response.jwt);
+
+				window.jwt = response.jwt;
+				window.username = this.state.name;
+
+				this.props.handleLog();
+				this.props.history.replace('/home');
+			}
+		});
 	};
 
 	handleClick = (e) => {
@@ -21,12 +48,14 @@ class Header extends Component {
 			};
 			
 			register(user).then((response) => {
-				console.log("register:")
-				console.log(response)
+				if (response && response.res && response.res === 'success') {
+					this.handleNewUser();
+				}
+				else if (response && response.res && response.res === 'user exists') {
+					alert("user exists");
+				}
 			});
-			return;
 		}
-		return false;
 	};
 
 	render() {
@@ -59,7 +88,7 @@ class Header extends Component {
 									<div>
 										<div>
 											<div className='text-center text-secondary container-sm'>
-												<form>
+												<form onSubmit={this.handleClick}>
 													<input
 														className='form-control'
 														type='text'
@@ -107,7 +136,7 @@ class Header extends Component {
 														required={true}
 														onChange={this.handleChange('phone')}
 													/>
-													<button
+													<input
 														className='btn btn-success btn-block'
 														type='submit'
 														style={{
@@ -116,10 +145,10 @@ class Header extends Component {
 															marginBottom: '10px',
 															fontWeight: '700',
 														}}
-														onClick={(e) => this.handleClick(e)}
+														value="SIGN UP"
+														// onClick={(e) => this.handleClick(e)}
 													>
-														SIGN UP
-													</button>
+													</input>
 												</form>
 											</div>
 										</div>
