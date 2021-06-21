@@ -97,11 +97,17 @@ public class AuthController {
     public ResponseEntity<HashMap<String, Object>> login(@RequestBody LoginRequest loginRequest) throws Exception {
         HashMap<String, Object> ret = new HashMap<>();
 
+        System.out.println("loginRequest.getName()");
+        System.out.println(loginRequest.getName());
+        System.out.println(loginRequest.getPassword());
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getName(), loginRequest.getPassword()));
         } catch (Exception e) {
             ret.put("res", "jwt not generated");
-            return new ResponseEntity<>(ret, HttpStatus.FORBIDDEN);
+            System.out.println("error:");
+            System.out.println(e);
+            System.out.println(":error");
+            return new ResponseEntity<>(ret, HttpStatus.BAD_REQUEST);
         }
 
         Users user = usersRepository.findByName(loginRequest.getName());
