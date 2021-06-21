@@ -74,6 +74,7 @@ class Header extends Component {
 													/>
 													<input
 														className='form-control'
+														type='email'
 														style={{
 															borderRadius: '10px',
 															marginBottom: '10px',
