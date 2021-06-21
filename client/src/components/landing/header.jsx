@@ -9,19 +9,21 @@ class Header extends Component {
 	};
 
 	handleClick = (e) => {
-		if (
-			this.state.name &&
-			this.state.email &&
-			this.state.pw &&
-			this.state.phone
-		) {
+		e.preventDefault()
+		
+		if (this.state.name && this.state.email && this.state.pw && this.state.phone) {
 			var user = {
 				realName: this.state.name,
 				name: this.state.name,
 				email: this.state.email,
 				password: this.state.pw,
+				isAdmin: 0
 			};
-
+			
+			register(user).then((response) => {
+				console.log("register:")
+				console.log(response)
+			});
 			return;
 		}
 		return false;
@@ -72,7 +74,6 @@ class Header extends Component {
 													/>
 													<input
 														className='form-control'
-														type='email'
 														style={{
 															borderRadius: '10px',
 															marginBottom: '10px',
