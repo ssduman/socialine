@@ -12,7 +12,11 @@ class Landing extends Component {
 					loginStatus={this.loginStatus}
 					{...this.props}
 				/>
-				<Header />
+				<Header
+					handleLog={this.props.handleLog}
+					loginStatus={this.loginStatus}
+					{...this.props}
+				/>
 				<Footer />
 			</React.Fragment>
 		);

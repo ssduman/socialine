@@ -84,7 +84,7 @@ public class AuthController {
 
         EmailRequest emailRequest = new EmailRequest();
         String link = "https://socialine.herokuapp.com/api/verify/" + token;
-        emailRequest.setText(String.format("Go to: <a href='%s'>%s</a>", link, link));
+        emailRequest.setText(String.format("Go to: %s", link));
         emailRequest.setEmail(newUser.getEmail());
         emailRequest.setSubject("Email Verification");
         emailSender.sendEmail(emailRequest);
