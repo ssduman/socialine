@@ -5,8 +5,10 @@ Accept: application/json
 
 GET http://localhost:8080/api/membership/user/2
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxIiwiaWF0IjoxNjI0Mjc5OTk2LCJleHAiOjE2MjQ0OTU5OTZ9.B2EqNhiCMiaF8DWAMfPR317gwLpHX0vAiepm_aviWTM
 
 ###
 
 GET http://localhost:8080/api/membership/subclub/2
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxIiwiaWF0IjoxNjI0Mjc5OTk2LCJleHAiOjE2MjQ0OTU5OTZ9.B2EqNhiCMiaF8DWAMfPR317gwLpHX0vAiepm_aviWTM

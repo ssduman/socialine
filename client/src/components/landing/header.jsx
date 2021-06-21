@@ -22,7 +22,6 @@ class Header extends Component {
 				password: this.state.pw,
 			};
 
-			console.log(register(user));
 			return;
 		}
 		return false;
@@ -47,7 +46,7 @@ class Header extends Component {
 										className='btn btn-outline-warning btn-xl js-scroll-trigger'
 										role='button'
 										style={{ fontWeight: 700 }}
-										href='browse'
+										href='/browse'
 									>
 										Browse Clubs
 									</a>

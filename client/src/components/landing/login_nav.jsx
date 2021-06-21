@@ -149,7 +149,7 @@ class LoginNavbar extends Component {
 								<div className='dropdown-divider'></div>
 								<a
 									className='dropdown-item'
-									href='forgot-password'
+									href='/forgot-password'
 									style={{
 										textAlign: 'center',
 										borderRadius: '10px',

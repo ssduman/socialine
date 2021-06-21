@@ -28,7 +28,6 @@ class Chat extends Component {
 		});
 
 		this.props.socket.on('connect', () => {
-			console.log("connect");
 		});
 
 		this.props.socket.on('chat', (data) => {
@@ -39,11 +38,9 @@ class Chat extends Component {
 		});
 
 		this.props.socket.on('disconnect', () => {
-			console.log('disconnect');
 		});
 
 		this.props.socket.on('reconnect_attempt', (attempts) => {
-			console.log('reconnect_attempt ' + attempts + ' attempt(s).');
 		});
 	}
 

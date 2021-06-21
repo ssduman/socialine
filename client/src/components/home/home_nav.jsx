@@ -28,7 +28,7 @@ class HomeNavbar extends Component {
 	};
 
 	redirecTo = () => {
-		window.location.replace('user/' + this.props.userId);
+		window.location.replace('/user/' + this.props.userId);
 	};
 	render() {
 		var styleofnavbar = 'navbar navbar-dark navbar-expand-lg fixed-top';
@@ -38,7 +38,7 @@ class HomeNavbar extends Component {
 				<div className='container'>
 					<a
 						className='navbar-brand js-scroll-trigger'
-						href='home'
+						href='/home'
 						style={{ fontWeight: 700 }}
 					>
 						SOCIALINE

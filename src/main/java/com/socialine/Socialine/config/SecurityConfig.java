@@ -3,6 +3,7 @@ package com.socialine.Socialine.config;
 import com.socialine.Socialine.security.JwtFilter;
 import com.socialine.Socialine.service.MyUserDetailsService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,11 +22,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final MyUserDetailsService myUserDetailsService;
-    private final JwtFilter jwtFilter;
+    @Autowired
+    private MyUserDetailsService myUserDetailsService;
+    @Autowired
+    private JwtFilter jwtFilter;
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
@@ -37,13 +39,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors().and().csrf().disable();
         httpSecurity.authorizeRequests()
-                .antMatchers("/").permitAll()
                 .antMatchers("/index.html").permitAll()
+                .antMatchers("/assets/**").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/api").permitAll()
+                .antMatchers("/api/").permitAll()
+                .antMatchers("/api/register").permitAll()
+                .antMatchers("/api/register/").permitAll()
                 .antMatchers("/api/login").permitAll()
-                .antMatchers("/profile/**").authenticated()
-                .antMatchers("/api/clubs").authenticated()
+                .antMatchers("/api/login/").permitAll()
                 .antMatchers("/api/passreset").permitAll()
                 .antMatchers("/api/passreset/**").permitAll()
+                .antMatchers("/api/verify/**").permitAll()
+                .antMatchers("/api/club/**").permitAll()
+                .antMatchers("/api/clubs/**").permitAll()
+                .antMatchers("/api/subclubs/**").permitAll()
+                .antMatchers("/api/**").authenticated()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
                 .and()

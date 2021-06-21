@@ -20,13 +20,11 @@ import java.util.function.Function;
 @Service
 public class JwtProvider {
 
-    private final String SECRET = "socialine";
     SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    String base64Key = Encoders.BASE64.encode(key.getEncoded());
 
     public String generateToken(String name) {
         Map<String, Object> claims = new HashMap<>();
-//        String name = userDetails.getUsername();
+        // String name = userDetails.getUsername();
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(name)

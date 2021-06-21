@@ -31,7 +31,7 @@ class Sidebar extends Component {
               marginBottom: "10px",
               cursor: "pointer",
             }}
-            href="home"
+            href="/home"
           >
             <i
               className="fa fa-calendar"
@@ -43,7 +43,7 @@ class Sidebar extends Component {
 
           <a
             style={{ color: "white", display: "block", marginBottom: "10px" }}
-            href="popular"
+            href="/popular"
           >
             <i
               className="fa fa-star"
@@ -64,7 +64,7 @@ class Sidebar extends Component {
 
           <a
             style={{ color: "white", display: "block", marginBottom: "30px" }}
-            href="myclubs"
+            href="/myclubs"
           >
             <i
               className="fa fa-heart"
@@ -77,7 +77,7 @@ class Sidebar extends Component {
           <h3 style={{ color: "white" }}>Categories</h3>
 
           {this.state.Clubs.map((club) => {
-            let link = "category/" + club.id;
+            let link = "/category/" + club.id;
             return (
               <a
                 style={{
@@ -98,11 +98,11 @@ class Sidebar extends Component {
           })}
           <br></br>
           {this.props.isAdmin ? (
-            <a href="requests" className="btn btn-sm btn-primary">
+            <a href="/requests" className="btn btn-sm btn-primary">
               Requests
             </a>
           ) : (
-            <a className="btn btn-sm btn-primary" href="requestclub">
+            <a className="btn btn-sm btn-primary" href="/requestclub">
               Request Club
             </a>
           )}

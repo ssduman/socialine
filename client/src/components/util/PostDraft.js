@@ -328,7 +328,6 @@ class PostDraft extends Component {
 										component: this.MyCallbackComponent,
 										type: 'callback',
 										onClick: (_editorState, name, _anchor) => {
-											console.log(`Clicked ${name} control`);
 										},
 									},
 								]}

@@ -44,7 +44,6 @@ const Login = (props) => {
 						<button
 							className='button'
 							onClick={() => {
-								console.log('modal closed ');
 								close();
 							}}
 						>

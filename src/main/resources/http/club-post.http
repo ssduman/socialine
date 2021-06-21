@@ -1,8 +1,9 @@
 POST http://localhost:8080/api/addclub
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxIiwiaWF0IjoxNjI0Mjc5NjAwLCJleHAiOjE2MjQ0OTU2MDB9.X-4ae-9UqLyOwnx-gLNIATEVug3yXrnXRzUquk0jyTo
 
 {
-  "name": "Test Club 5",
+  "name": "Test Club 2",
   "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
   "rating": 3,
   "reviews": 3

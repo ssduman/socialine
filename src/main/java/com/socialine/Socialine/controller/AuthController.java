@@ -41,7 +41,11 @@ public class AuthController {
     public ResponseEntity<HashMap<String, Object>> rememberMe(@RequestHeader("Authorization") String token, @RequestHeader("username") String username) {
         HashMap<String, Object> ret = new HashMap<>();
 
-        ret.put("res", jwtProvider.rememberMe(token.substring(7), username));
+        try {
+            ret.put("res", jwtProvider.rememberMe(token.substring(7), username));
+        } catch (Exception e) {
+            System.out.println("/api jwt exception:" + e);
+        }
 
         return new ResponseEntity<>(ret, HttpStatus.OK);
     }

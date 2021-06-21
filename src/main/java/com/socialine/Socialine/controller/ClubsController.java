@@ -1,11 +1,9 @@
 package com.socialine.Socialine.controller;
 
 import com.socialine.Socialine.model.Clubs;
-import com.socialine.Socialine.model.SubClubs;
 import com.socialine.Socialine.model.Users;
 import com.socialine.Socialine.pojo.SubClubPOJO;
 import com.socialine.Socialine.service.ClubsService;
-import com.socialine.Socialine.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,18 +16,10 @@ public class ClubsController {
     @Autowired
     private ClubsService clubsService;
 
-    /*
-    POST MAPPING
-     */
-
     @PostMapping("/api/addclub")
     public boolean addClub(@RequestBody Clubs club) {
         return clubsService.saveClub(club);
     }
-
-    /*
-    GET MAPPING
-     */
 
     @GetMapping("/api/club/{id}")
     public Clubs getClub(@PathVariable int id) {
@@ -61,18 +51,10 @@ public class ClubsController {
         return clubsService.getClubByName(name);
     }
 
-    /*
-    PUT MAPPING
-     */
-
     @PutMapping("/api/updclubs")
     public Boolean updClub(@RequestBody Clubs club) {
         return clubsService.updateClub(club);
     }
-
-    /*
-    DELETE MAPPING
-     */
 
     @DeleteMapping("/api/club/delete/{id}")
     public Boolean deleteClub(@PathVariable int id) {

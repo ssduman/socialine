@@ -22,9 +22,6 @@ import Requests from './components/requests/requests';
 var socket = io('https://socialine.herokuapp.com:9090', {
 	transports: ['polling', 'websocket']
 });
-console.log("socket:")
-console.log(socket)
-console.log(":socket")
 
 class App extends Component {
 	state = {
@@ -47,7 +44,6 @@ class App extends Component {
 			});
 
 			const data = await res.json();
-			console.log('data:', data);
 
 			if (data.res) {
 				console.log('token auth success');

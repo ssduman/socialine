@@ -11,7 +11,6 @@ class Home extends Component {
 	componentDidMount() {
 		if (this.props.userId)
 			getUser(this.props.userId).then((response) => {
-				console.log(response);
 				if (response[0].isAdmin === 1) this.setState({ isAdmin: true });
 			});
 	}

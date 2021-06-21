@@ -1,5 +1,6 @@
 GET http://localhost:8080/api/Comment/comments
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxIiwiaWF0IjoxNjI0Mjc5OTk2LCJleHAiOjE2MjQ0OTU5OTZ9.B2EqNhiCMiaF8DWAMfPR317gwLpHX0vAiepm_aviWTM
 
 ###
 

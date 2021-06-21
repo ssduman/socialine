@@ -19,45 +19,33 @@ import java.util.List;
 @Service
 public class ClubsService {
 
-
     private final UsersRepository usersRepository;
     private final ClubsRepository clubsRepository;
     private final SubClubsRepository subClubsRepository;
     private final SubClubsService subClubsService;
 
-
-
     public Boolean saveClub(Clubs club) {
 
-        // if check
+        // id check
         if (isExistClub(club.getId())) {
-            throw new IllegalStateException(
-                    club.getId() + " id is already exist"
-            );
+            throw new IllegalStateException(club.getId() + " id is already exist");
         }
 
         // name check
         if (isExistClub(club.getName())) {
-            throw new IllegalStateException(
-                    club.getName() + " is already exist"
-            );
+            throw new IllegalStateException(club.getName() + " is already exist");
         }
 
         checkNameLength(club.getName());
 
-
         // admin check
         if (!isAdminExist(club.getAdminId())) {
-            throw new IllegalStateException(
-                    club.getAdminId() + " admin id does not exist"
-            );
+            throw new IllegalStateException(club.getAdminId() + " admin id does not exist");
         }
 
         // creator check
         if (!isCreatorExist(club.getCreatorId())) {
-            throw new IllegalStateException(
-                    club.getAdminId() + " creator id does not exist"
-            );
+            throw new IllegalStateException(club.getAdminId() + " creator id does not exist");
         }
 
         club.setCreationDate(LocalDate.now());
@@ -79,9 +67,7 @@ public class ClubsService {
 
     public Boolean deleteClub(int id) {
         if (!isExistClub(id)) {
-            throw new IllegalStateException(
-                    id + " id club does not exist"
-            );
+            throw new IllegalStateException(id + " id club does not exist");
         }
 
         List<SubClubs> subClubsList = getSubClubsOf(id);
@@ -98,37 +84,29 @@ public class ClubsService {
 
         // id check
         if (clubById == null) {
-            throw new IllegalStateException(
-                    "club with id " + club.getId() + " does not exist"
-            );
+            throw new IllegalStateException("club with id " + club.getId() + " does not exist");
         }
 
         // same name check
         Clubs clubByName = clubsRepository.findByName(club.getName()).orElse(null);
         if (clubByName != null &&
                 clubByName.getId() != club.getId()) {
-            throw new IllegalStateException(
-                    club.getName() + " club is already exist with another id"
-            );
+            throw new IllegalStateException(club.getName() + " club is already exist with another id");
         }
 
         checkNameLength(club.getName());
 
         // admin check
         if (!isAdminExist(club.getAdminId())) {
-            throw new IllegalStateException(
-                    club.getAdminId() + " admin id does not exist"
-            );
+            throw new IllegalStateException(club.getAdminId() + " admin id does not exist");
         }
 
         // creator check
         if (!isCreatorExist(club.getCreatorId())) {
-            throw new IllegalStateException(
-                    club.getAdminId() + " creator id does not exist"
-            );
+            throw new IllegalStateException(club.getAdminId() + " creator id does not exist");
         }
 
-        //updating
+        // updating
         clubById.update(club);
         // clubsRepository.save(clubById);
         return true;
@@ -137,9 +115,7 @@ public class ClubsService {
     public List<SubClubs> getSubClubsOf(int id) {
 
         if (!isExistClub(id)) {
-            throw new IllegalStateException(
-                    id + " id club does not exist"
-            );
+            throw new IllegalStateException(id + " id club does not exist");
         }
 
         return subClubsRepository.findAllByParentId(id);
@@ -148,9 +124,7 @@ public class ClubsService {
     public List<SubClubPOJO> getSubClubsOfUsingId(int id) {
 
         if (!isExistClub(id)) {
-            throw new IllegalStateException(
-                    id + " id club does not exist"
-            );
+            throw new IllegalStateException(id + " id club does not exist");
         }
 
         return subClubsRepository.getAllParentUsingId(id);
@@ -161,9 +135,7 @@ public class ClubsService {
 
         // id check
         if (clubById == null) {
-            throw new IllegalStateException(
-                    "club with id " + id + " does not exist"
-            );
+            throw new IllegalStateException("club with id " + id + " does not exist");
         }
 
         return usersRepository.findById(clubById.getCreatorId()).orElse(null);
@@ -174,9 +146,7 @@ public class ClubsService {
 
         // id check
         if (clubById == null) {
-            throw new IllegalStateException(
-                    "club with id " + id + " does not exist"
-            );
+            throw new IllegalStateException("club with id " + id + " does not exist");
         }
 
         return usersRepository.findById(clubById.getAdminId()).orElse(null);
@@ -191,34 +161,28 @@ public class ClubsService {
     }
 
     private boolean isCreatorExist(int creatorId) {
-        // will be assigned later
-        if (creatorId == 0)
+        if (creatorId == 0) {
             return true;
+        }
         return usersRepository.existsById(creatorId);
     }
 
     private boolean isAdminExist(int adminId) {
-        // will be assigned later
-        if (adminId == 0)
+        if (adminId == 0) {
             return true;
+        }
         return usersRepository.existsById(adminId);
     }
 
     private void checkNameLength(String name) {
         int MIN_CLUB_NAME_LENGTH = 4;
         if (name.length() < MIN_CLUB_NAME_LENGTH) {
-            throw new IllegalStateException(
-                    name + " club name is too short"
-            );
+            throw new IllegalStateException(name + " club name is too short");
         }
 
         int MAX_CLUB_NAME_LENGTH = 30;
         if (name.length() > MAX_CLUB_NAME_LENGTH) {
-            throw new IllegalStateException(
-                    name + " club name is too long"
-            );
+            throw new IllegalStateException(name + " club name is too long");
         }
     }
-
-
 }

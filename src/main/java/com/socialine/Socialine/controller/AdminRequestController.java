@@ -14,8 +14,6 @@ public class AdminRequestController {
     @Autowired
     public AdminRequestService adminRequestService;
 
-    // GET MAPPING
-
     @GetMapping("/api/adminRequest/all")
     public List<AdminRequest> getAdminRequests() {
         return adminRequestService.getAdminRequests();
@@ -31,7 +29,6 @@ public class AdminRequestController {
         return adminRequestService.getAdminRequest(id);
     }
 
-
     @GetMapping("/api/adminRequest/club/{clubId}")
     public List<AdminRequest> getAdminRequestOfClub(@PathVariable int clubId) {
         return adminRequestService.getAdminRequestOfClub(clubId);
@@ -42,7 +39,6 @@ public class AdminRequestController {
         return adminRequestService.getAdminRequestOfSubClub(subClubId);
     }
 
-
     @PostMapping("/api/addAdminRequest")
     public boolean addAdminRequest(@RequestBody AdminRequest adminRequest) {
         return adminRequestService.addAdminRequest(adminRequest);
@@ -52,7 +48,4 @@ public class AdminRequestController {
     public boolean deleteAdminRequest(@PathVariable int id) {
         return adminRequestService.deleteAdminRequest(id);
     }
-
-
-
 }

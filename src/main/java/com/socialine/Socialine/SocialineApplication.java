@@ -13,19 +13,17 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class SocialineApplication implements CommandLineRunner {
 
-    private final SocketIOServer server;
+    // private final SocketIOServer server;
 
-    @Autowired
-    public SocialineApplication(SocketIOServer server) {
-        this.server = server;
-    }
+    // @Autowired
+    // public SocialineApplication(SocketIOServer server) { this.server = server; }
 
     public static void main(String[] args) {
         SpringApplication.run(SocialineApplication.class, args);
     }
 
     public void run(String... args) {
-        server.start();
+        // server.start();
         System.out.println("finish");
     }
 }

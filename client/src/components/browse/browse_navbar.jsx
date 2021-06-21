@@ -21,7 +21,7 @@ class LoginNavbar extends Component {
 				window.jwt = response.jwt;
 				window.username = this.state.name;
 				this.props.handleLog();
-				window.location.replace('home');
+				window.location.replace('/home');
 			} else if (response.res === 'user not verified') {
 				this.setState({ warning: true });
 				this.setState({ warningMessage: 'Verify your email' });
@@ -169,7 +169,7 @@ class LoginNavbar extends Component {
 								<div className='dropdown-divider'></div>
 								<a
 									className='dropdown-item'
-									href='forgot-password'
+									href='/forgot-password'
 									style={{
 										textAlign: 'center',
 										borderRadius: '10px',
