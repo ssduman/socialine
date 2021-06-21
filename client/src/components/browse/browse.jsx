@@ -12,6 +12,11 @@ class Browse extends Component {
 		});
 	}
 
+	routeChange = (id) => {
+		let path = '/clubs/' + id;
+		this.props.history.push(path);
+	};
+
 	render() {
 		const { currentPage, clubsPerPage, subClubs } = this.state;
 
@@ -59,7 +64,7 @@ class Browse extends Component {
 											<div
 												className='card text-white bg-dark'
 												id={element.subClubId}
-												key={element.subClubId}
+												key={'parent' + element.subClubId}
 												style={{
 													width: '13rem',
 													marginLeft: '20px',

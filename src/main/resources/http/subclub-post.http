@@ -1,5 +1,6 @@
 POST http://localhost:8080/api/addsubclub
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxIiwiaWF0IjoxNjI0MjcyMjYzLCJleHAiOjE2MjQ0ODgyNjN9.036-xISDtj-oirWfUnxEghEHEOCviLSPn2JBZscNc3U
 
 {
   "adminId": 1,

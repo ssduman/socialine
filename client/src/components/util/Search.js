@@ -20,8 +20,7 @@ class Search extends Component {
 	}
 
 	routeChange = (id) => {
-		let path = '/clubs/' + id;
-		window.location.replace('http://localhost:3000' + path);
+		window.location.replace(`/clubs/${id}`);
 	};
 
 	render() {
@@ -52,18 +51,18 @@ class Search extends Component {
 					.slice(
 						this.state.searchTerm == '' ? this.state.pagesVisited : 0,
 						(this.state.searchTerm == '' ? this.state.pagesVisited : 0) +
-							this.perPage
+						this.perPage
 					)
 					.map((val, key) => {
 						return (
 							<div key={key} className='mt-3'>
 								<div
-									class='card text-white bg-secondary'
+									className='card text-white bg-secondary'
 									onClick={() => this.routeChange(val.subClubId)}
 									style={{ cursor: 'pointer' }}
 								>
-									<div class='card-body'>
-										<h5 class='card-text'>{val.name}</h5>
+									<div className='card-body'>
+										<h5 className='card-text'>{val.name}</h5>
 									</div>
 								</div>
 							</div>

@@ -39,7 +39,6 @@ public class Post {
     @JoinColumn(name = "subClubId")
     private SubClubs subClub;
 
-    @Lob
     private String text;
 
     private String title;

@@ -1,11 +1,4 @@
-import userEvent from '@testing-library/user-event';
-
-export async function getUsers() {
-	const res = await fetch('http://localhost:8080/api/users/');
-	const data = await res.json();
-
-	return data;
-}
+import cookie from 'js-cookie';
 
 export async function getUser(id) {
 	const res = await fetch(`/api/user/${id}`, {
@@ -13,12 +6,12 @@ export async function getUser(id) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
-	console.log(data);
 
 	return data;
 }
@@ -33,7 +26,6 @@ export async function register(user) {
 		},
 		body: JSON.stringify(user),
 	});
-
 	const data = await res.json();
 
 	return data;
@@ -49,7 +41,6 @@ export async function login(user) {
 		},
 		body: JSON.stringify(user),
 	});
-
 	const data = await res.json();
 
 	return data;
@@ -66,6 +57,7 @@ export async function getClubs() {
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -80,6 +72,7 @@ export async function getClubsCategory(id) {
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -89,11 +82,20 @@ export async function createClub(club) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(club),
 	});
 	const data = await res.json();
+	if (data !== true && data !== false) {
+		return false;
+	}
+	if (res.status && res.status === 403) {
+		// forbidden, set cookie
+		return false
+	}
+
 	return data;
 }
 
@@ -103,12 +105,21 @@ export async function createsubClub(club) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(club),
 	});
 	const data = await res.json();
-	console.log(data);
+	if (data !== true && data !== false) {
+		return false;
+	}
+	if (res.status && res.status === 403) {
+		// forbidden, set cookie
+		return false
+	}
+
+	return data;
 }
 
 export async function getsubClubs() {
@@ -122,6 +133,7 @@ export async function getsubClubs() {
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -136,7 +148,7 @@ export async function getsubClub(id) {
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
-	console.log(data);
+
 	return data;
 }
 
@@ -151,6 +163,7 @@ export async function postForgot(email) {
 		body: JSON.stringify(email),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -165,6 +178,7 @@ export async function changePassword(token, newPassword) {
 		body: JSON.stringify(newPassword),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -174,12 +188,12 @@ export async function editsubClub(club) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(club),
 	});
 	const data = await res.json();
-	console.log(data);
 }
 
 export async function deletesubClub(id) {
@@ -188,27 +202,29 @@ export async function deletesubClub(id) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
-	console.log(data);
 }
 
-// subclubs posts
 export async function getPosts(subClub) {
 	const res = await fetch(`/api/Post/postsBySubClub/${subClub}`, {
 		method: 'GET',
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
-	console.log(data);
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -219,11 +235,15 @@ export async function getPostsByAuthor(user) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -234,11 +254,13 @@ export async function addPost(post) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(post),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -248,12 +270,15 @@ export async function getUserMembership(user) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
-	console.log(data);
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -264,11 +289,13 @@ export async function addUserMembership(user) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(user),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -278,11 +305,13 @@ export async function addComment(comment) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(comment),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -292,12 +321,15 @@ export async function getComments() {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
-	console.log(data);
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -308,11 +340,13 @@ export async function addReport(report) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(report),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -322,11 +356,13 @@ export async function rateClub(rate) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(rate),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -336,12 +372,13 @@ export async function reviewClub(review) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(review),
 	});
 	const data = await res.json();
-	console.log(data);
+
 	return data;
 }
 
@@ -351,12 +388,15 @@ export async function getMembers(id) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
-	console.log(data);
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -367,6 +407,7 @@ export async function userAbout(about) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(about),
@@ -382,11 +423,13 @@ export async function addAdminRequest(user) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(user),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -396,11 +439,15 @@ export async function getReports() {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -411,6 +458,7 @@ export async function deleteReport(id) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
@@ -424,6 +472,7 @@ export async function deleteAdminreq(id) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
@@ -437,6 +486,7 @@ export async function banUser(user) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(user),
@@ -452,6 +502,7 @@ export async function makesubadmin(user) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(user),
@@ -467,11 +518,13 @@ export async function addClubRequest(club) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(club),
 	});
 	const data = await res.json();
+
 	return data;
 }
 
@@ -481,11 +534,15 @@ export async function getadminRequests() {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -496,11 +553,15 @@ export async function getclubRequests() {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+	if (res.status && res.status === 403) {
+		return []
+	}
 
 	return data;
 }
@@ -511,10 +572,15 @@ export async function getMessagesBetween(senderID, receiverID) {
 		headers: {
 			'Content-type': 'application/json',
 			Accept: 'application/json',
+			Authorization: 'Bearer ' + cookie.get('token'),
 			'Access-Control-Allow-Origin': '*',
 		},
 		body: JSON.stringify(),
 	});
 	const data = await res.json();
+	if (res.status && res.status === 403) {
+		return []
+	}
+
 	return data;
 }

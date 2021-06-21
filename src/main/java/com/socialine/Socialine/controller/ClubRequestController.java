@@ -1,15 +1,11 @@
 package com.socialine.Socialine.controller;
 
-
 import com.socialine.Socialine.model.ClubRequest;
-import com.socialine.Socialine.repository.ClubRequestRepository;
 import com.socialine.Socialine.service.ClubRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -17,8 +13,6 @@ public class ClubRequestController {
 
     @Autowired
     private ClubRequestService clubRequestService;
-
-    // GET MAPPING
 
     @GetMapping("/api/clubRequest/all")
     public List<ClubRequest> getClubRequests() {
@@ -45,7 +39,6 @@ public class ClubRequestController {
         return clubRequestService.getClubRequestByName(name);
     }
 
-
     @PostMapping("/api/addClubRequest")
     public boolean addClubRequest(@RequestBody ClubRequest clubRequest) {
         return clubRequestService.addClubRequest(clubRequest);
@@ -55,5 +48,4 @@ public class ClubRequestController {
     public boolean deleteClubRequest(@PathVariable int id) {
         return clubRequestService.deleteClubRequest(id);
     }
-
 }

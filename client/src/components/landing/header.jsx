@@ -9,20 +9,21 @@ class Header extends Component {
 	};
 
 	handleClick = (e) => {
-		if (
-			this.state.name &&
-			this.state.email &&
-			this.state.pw &&
-			this.state.phone
-		) {
+		e.preventDefault()
+		
+		if (this.state.name && this.state.email && this.state.pw && this.state.phone) {
 			var user = {
 				realName: this.state.name,
 				name: this.state.name,
 				email: this.state.email,
 				password: this.state.pw,
+				isAdmin: 0
 			};
-
-			console.log(register(user));
+			
+			register(user).then((response) => {
+				console.log("register:")
+				console.log(response)
+			});
 			return;
 		}
 		return false;
@@ -47,7 +48,7 @@ class Header extends Component {
 										className='btn btn-outline-warning btn-xl js-scroll-trigger'
 										role='button'
 										style={{ fontWeight: 700 }}
-										href='http://localhost:3000/browse'
+										href='/browse'
 									>
 										Browse Clubs
 									</a>

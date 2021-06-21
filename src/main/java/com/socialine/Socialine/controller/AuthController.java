@@ -41,7 +41,11 @@ public class AuthController {
     public ResponseEntity<HashMap<String, Object>> rememberMe(@RequestHeader("Authorization") String token, @RequestHeader("username") String username) {
         HashMap<String, Object> ret = new HashMap<>();
 
-        ret.put("res", jwtProvider.rememberMe(token.substring(7), username));
+        try {
+            ret.put("res", jwtProvider.rememberMe(token.substring(7), username));
+        } catch (Exception e) {
+            System.out.println("/api jwt exception:" + e);
+        }
 
         return new ResponseEntity<>(ret, HttpStatus.OK);
     }
@@ -79,7 +83,8 @@ public class AuthController {
         System.out.println(token);
 
         EmailRequest emailRequest = new EmailRequest();
-        emailRequest.setText("Go to: http://localhost:8080/api/verify/" + token);
+        String link = "https://socialine.herokuapp.com/api/verify/" + token;
+        emailRequest.setText(String.format("Go to: <a href='%s'>%s</a>", link, link));
         emailRequest.setEmail(newUser.getEmail());
         emailRequest.setSubject("Email Verification");
         emailSender.sendEmail(emailRequest);
@@ -96,7 +101,7 @@ public class AuthController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getName(), loginRequest.getPassword()));
         } catch (Exception e) {
             ret.put("res", "jwt not generated");
-            return new ResponseEntity<>(ret, HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(ret, HttpStatus.BAD_REQUEST);
         }
 
         Users user = usersRepository.findByName(loginRequest.getName());

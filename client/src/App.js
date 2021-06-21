@@ -19,8 +19,8 @@ import Browse from './components/browse/browse';
 import RequestClub from './components/requests/request_club.jsx';
 import Requests from './components/requests/requests';
 
-var socket = io('http://localhost:9092/chat', {
-	transports: ['polling', 'websocket'],
+var socket = io('https://socialine.herokuapp.com:9090', {
+	transports: ['polling', 'websocket']
 });
 
 class App extends Component {
@@ -44,29 +44,27 @@ class App extends Component {
 			});
 
 			const data = await res.json();
-			console.log('data:', data);
 
 			if (data.res) {
 				console.log('token auth success');
 
 				this.setState({ isLoggedIn: 1 });
 				this.setState({ username: cookie.get('userid') });
-				if(window.location.href === 'http://localhost:3000/')window.location.replace('http://localhost:3000/home');
+				// if (window.location.pathname === '/') {
+				// 	window.location.replace('home');
+				// }
 			} else {
 				console.log('token auth failed');
-				window.location.replace('http://localhost:3000/');
+				// window.location.replace('');
 				this.setState({ isLoggedIn: 0 });
 				this.setState({ username: '' });
 			}
 		} else {
-			if (
-				window.location.href === 'http://localhost:3000/browse' ||
-				window.location.href === 'http://localhost:3000/'
-			) {
-				console.log('no token');
-			} else {
-				window.location.replace('http://localhost:3000/');
-			}
+			// if (window.location.pathname === '/browse' || window.location.pathname === '/') {
+			// 	console.log('no token');
+			// } else {
+			// 	window.location.replace('');
+			// }
 		}
 	}
 

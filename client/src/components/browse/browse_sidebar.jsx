@@ -31,7 +31,7 @@ class Sidebar extends Component {
 							marginBottom: '10px',
 							cursor: 'pointer',
 						}}
-						href='http://localhost:3000/browse'
+						href='/browse'
 					>
 						<i
 							className='fa fa-calendar'

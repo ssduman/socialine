@@ -23,7 +23,7 @@ public class ChatModule {
 
     @Autowired
     public ChatModule(SocketIOServer server) {
-        this.namespace = server.addNamespace("/chat");
+        this.namespace = server.addNamespace("/");
         this.namespace.addConnectListener(onConnected());
         this.namespace.addDisconnectListener(onDisconnected());
         this.namespace.addEventListener("chat", ChatMessage.class, onChatReceived());

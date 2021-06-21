@@ -17,8 +17,9 @@ public class SocketConfig {
     @Bean
     public SocketIOServer socketIOServer() {
         Configuration config = new Configuration();
-        config.setHostname(host);
+        // config.setHostname("socialine.herokuapp.com");
         config.setPort(port);
+        config.setOrigin("*");
         return new SocketIOServer(config);
     }
 }

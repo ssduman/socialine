@@ -16,11 +16,6 @@ public class UsersController {
 
     private final UsersService usersService;
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
-
     @GetMapping("/api/users")
     public List<UsersPOJO> getUser() {
         return usersService.getUsers();
