@@ -79,8 +79,11 @@ public class AuthController {
         newUser.setLastWrongAttempt(null);
         newUser.setQuestionnaireAnswered(null);
 
+        newUser.setRoles(new ArrayList<>());
+        newUser.getRoles().add("ROLE_USER");
+        newUser.getRoles().add("READ_PROFILE");
+
         String token = generateVerificationToken(newUser, 0);
-        System.out.println(token);
 
         EmailRequest emailRequest = new EmailRequest();
         String link = "https://socialine.herokuapp.com/api/verify/" + token;

@@ -10,6 +10,7 @@ Content-Type: application/json
 
 PUT http://localhost:8080/api/user/makeadmin
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxNGFkbWluIiwiaWF0IjoxNjI0NTM2MDEwLCJleHAiOjE2MjQ3NTIwMTB9.MjBiiePJz7CvhsQz28oAJ5UbGK2neiiDUTNiQoGI23o
 
 {
   "id": 2
