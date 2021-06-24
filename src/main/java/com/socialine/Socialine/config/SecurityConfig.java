@@ -54,6 +54,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/club/**").permitAll()
                 .antMatchers("/api/clubs/**").permitAll()
                 .antMatchers("/api/subclubs/**").permitAll()
+                .antMatchers("/api/user/makeadmin").hasAuthority("ADMIN")
+                .antMatchers("/api/user/makeadmin/").hasAuthority("ADMIN")
+                .antMatchers("/api/adminRequest/**").hasAuthority("ADMIN")
+                .antMatchers("/api/addclub").hasAuthority("ADMIN")
+                .antMatchers("/api/addclub/").hasAuthority("ADMIN")
+                .antMatchers("/api/updclubs").hasAuthority("ADMIN")
+                .antMatchers("/api/updclubs/").hasAuthority("ADMIN")
+                .antMatchers("/api/addsubclub").hasAuthority("ADMIN")
+                .antMatchers("/api/addsubclub/").hasAuthority("ADMIN")
+                .antMatchers("/api/updsubclubs").hasAuthority("ADMIN")
+                .antMatchers("/api/updsubclubs/").hasAuthority("ADMIN")
+                .antMatchers("/api/club/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/api/subclubs/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/api/Post/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/ban").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/ban/").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/unban").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/unban/").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/makeadmin").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/makeadmin/").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/revokeadmin").hasAuthority("ADMIN")
+                .antMatchers("/api/membership/revokeadmin/").hasAuthority("ADMIN")
+                .antMatchers("/api/users").hasAuthority("ADMIN")
+                .antMatchers("/api/users/").hasAuthority("ADMIN")
                 .antMatchers("/api/**").authenticated()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
@@ -63,8 +87,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        // httpSecurity.httpBasic().disable();
         httpSecurity.formLogin().disable();
+        // httpSecurity.httpBasic().disable();
         // .formLogin().loginPage("/login").permitAll().and()
 
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

@@ -42,6 +42,9 @@ public class Users {
     private LocalDate questionnaireAnswered;
     private String about;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
+
     @ToString.Exclude
     @OneToMany(
             mappedBy = "author",
@@ -72,12 +75,6 @@ public class Users {
         posts.add(post);
         post.setAuthor(this);
     }
-//    public void addPosts(List<Post> posts) {
-//        this.posts.addAll(posts);
-//        for (Post post : posts) {
-//            post.setAuthor(this);
-//        }
-//    }
 
     public void removePost(Post post) {
         posts.remove(post);

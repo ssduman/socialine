@@ -1,6 +1,5 @@
 package com.socialine.Socialine.controller;
 
-
 import com.socialine.Socialine.model.Clubs;
 import com.socialine.Socialine.model.SubClubs;
 import com.socialine.Socialine.model.Users;
@@ -22,21 +21,13 @@ import java.util.List;
 @RestController
 public class SubClubsController {
 
-
     private final SubClubsService subClubsService;
     private final UserMembershipsService membershipsService;
 
-    /*
-    POST MAPPING
-     */
     @PostMapping("/api/addsubclub")
     public boolean addSubClub(@RequestBody SubClubs subClub) {
         return subClubsService.saveSubClub(subClub);
     }
-
-    /*
-    GET MAPPING
-     */
 
     @GetMapping("/api/subclubs")
     public List<SubClubPOJO> getSubClubs() {
@@ -48,6 +39,36 @@ public class SubClubsController {
     public List<SubClubPOJO> getSubClub(@PathVariable int id) {
         List<SubClubPOJO> subClubs = subClubsService.getSubClubUsingId(id);
         return getSubClubPOJOS(subClubs);
+    }
+
+    @GetMapping("/api/subclubs/{subClubId}/parent")
+    public Clubs getParent(@PathVariable int subClubId) {
+        return subClubsService.getParentClub(subClubId);
+    }
+
+    @GetMapping("/api/subclubs/{subClubId}/creator")
+    public Users getCreatorOf(@PathVariable int subClubId) {
+        return subClubsService.getCreatorOf(subClubId);
+    }
+
+    @GetMapping("/api/subclubs/{subClubId}/admin")
+    public Users getAdminOf(@PathVariable int subClubId) {
+        return subClubsService.getAdminOf(subClubId);
+    }
+
+    @GetMapping("/api/subclubs/{subClubName}/name")
+    public SubClubs getSubclubOf(@PathVariable String subClubName) {
+        return subClubsService.getSubclubOf(subClubName);
+    }
+
+    @PutMapping("/api/updsubclubs")
+    public Boolean updSubClub(@RequestBody SubClubs subClub) {
+        return subClubsService.updateSubClub(subClub);
+    }
+
+    @DeleteMapping("/api/subclubs/delete/{id}")
+    public Boolean deleteSubClub(@PathVariable int id) {
+        return subClubsService.deleteSubClub(id);
     }
 
     private List<SubClubPOJO> getSubClubPOJOS(List<SubClubPOJO> subClubs) {
@@ -71,45 +92,5 @@ public class SubClubsController {
             subClub.setReviews(numberOfReviews);
         }
         return subClubs;
-    }
-
-
-    @GetMapping("/api/subclubs/{subClubId}/parent")
-    public Clubs getParent(@PathVariable int subClubId) {
-        return subClubsService.getParentClub(subClubId);
-    }
-
-    @GetMapping("/api/subclubs/{subClubId}/creator")
-    public Users getCreatorOf(@PathVariable int subClubId) {
-        return subClubsService.getCreatorOf(subClubId);
-    }
-
-    @GetMapping("/api/subclubs/{subClubId}/admin")
-    public Users getAdminOf(@PathVariable int subClubId) {
-        return subClubsService.getAdminOf(subClubId);
-    }
-
-    @GetMapping("/api/subclubs/{subClubName}/name")
-    public SubClubs getSubclubOf(@PathVariable String subClubName) {
-        return subClubsService.getSubclubOf(subClubName);
-    }
-
-
-    /*
-    PUT MAPPING
-     */
-
-    @PutMapping("/api/updsubclubs")
-    public Boolean updSubClub(@RequestBody SubClubs subClub) {
-        return subClubsService.updateSubClub(subClub);
-    }
-
-    /*
-    DELETE MAPPING
-     */
-
-    @DeleteMapping("/api/subclubs/delete/{id}")
-    public Boolean deleteSubClub(@PathVariable int id) {
-        return subClubsService.deleteSubClub(id);
     }
 }
