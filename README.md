@@ -15,7 +15,7 @@
 * Clone the repository, run `mvn spring-boot:run` (or run from IntelliJ IDEA) and `cd client && npm i && npm start`
 ## Contributors: ##
 * [yavuzerenozer](https://github.com/yavuzerenozer)
-* [ssduman](https://github.com/ssduman)
+* [ssduman](https://github.com/ssduman) (my part was most of the backend, some React components and deploying)
 * [b21727589](https://github.com/b21727589)
 * [b21727283](https://github.com/b21727283)
 * [bexheroes](https://github.com/bexheroes)
